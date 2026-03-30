@@ -42,11 +42,9 @@ function endGame(){
 
     let text = playerScore >= 10 ? "おめでとう" : "ざ〜んね〜んｗ";
 
-    document.getElementById("janken").innerHTML = `
-        <div style="color:#00ff66; font-size:30px;">
-            ${text}
-        </div>
+    document.getElementById("jankenText").innerText = text;
 
+    document.querySelector("#janken div:last-child").innerHTML = `
         <button onclick="restartGame()">再挑戦</button>
         <button onclick="goHome()">ホームへ</button>
     `;
@@ -55,9 +53,15 @@ function endGame(){
 function restartGame(){
     playerScore = 0;
     enemyScore = 0;
-    location.reload();
+
+    // 表示リセット
+    document.getElementById("enemyScore").innerText = 0;
+    document.getElementById("playerScore").innerText = 0;
+    document.getElementById("jankenText").innerText = "シトムとじゃんけんしてみよう";
+
+    showScreen("janken");
 }
 
 function goHome(){
-    location.reload();
+    showScreen("home");
 }
