@@ -106,9 +106,14 @@ body {
         ゲーム一覧
         <div class="settings-btn" onclick="showScreen('settings')">⚙</div>
     </div>
-    <div class="content">
-        まだゲームはないぜ！音かっこいいやろ
+    
+   <div class="content" style="flex-direction: column; align-items: flex-start; padding: 20px;">
+
+    <div onclick="openGame('janken')" style="text-align: center; cursor: pointer;">
+        <img src="Icon.png" width="80"><br>
+        じゃいけん
     </div>
+
 </div>
 
 <!-- 設定 -->
@@ -169,7 +174,36 @@ function startSystem() {
     }, 300);
 }
 </script>
-    
+
+<div id="janken" class="screen" style="flex-direction: column;">
+
+    <!-- スコア -->
+    <div style="position:absolute; top:10px; left:10px;">
+        シトム: <span id="enemyScore">0</span>
+    </div>
+
+    <div style="position:absolute; top:10px; right:10px;">
+        プレイヤー: <span id="playerScore">0</span>
+    </div>
+
+    <!-- メッセージ -->
+    <div id="jankenText" style="color:#00ff66; margin-top:50px;">
+        シトムとじゃんけんしてみよう
+    </div>
+
+    <!-- 画像 -->
+    <img src="SITM.png" width="200" style="margin:20px;">
+
+    <!-- ボタン -->
+    <div>
+        <button onclick="playJanken('グー')">✊</button>
+        <button onclick="playJanken('チョキ')">✌️</button>
+        <button onclick="playJanken('パー')">✋</button>
+    </div>
+
+</div>
+
+    <script src="janken.js"></script>
     <audio id="bootSound" src="Sound.mp3"></audio>
     
 </body>
