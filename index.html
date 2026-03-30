@@ -14,7 +14,6 @@ body {
     overflow: hidden;
 }
 
-/* 共通画面 */
 .screen {
     position: absolute;
     width: 100%;
@@ -24,27 +23,19 @@ body {
     align-items: center;
 }
 
-/* ブート画面 */
-#boot {
-    display: flex;
-    font-size: 20px;
-}
+/* ブート */
+#boot { display: flex; }
 
-/* ロゴ画面 */
+/* ロゴ */
 #logo {
     display: flex;
     opacity: 0;
     transition: opacity 1s;
 }
 
-#logo img {
-    width: 200px;
-}
-
-/* ホーム画面 */
+/* ホーム */
 #home {
     flex-direction: column;
-    background: black;
 }
 
 /* 上部バー */
@@ -55,6 +46,16 @@ body {
     text-align: center;
     padding: 10px 0;
     font-weight: bold;
+    position: relative;
+}
+
+/* ⚙ボタン */
+.settings-btn {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 /* コンテンツ */
@@ -65,61 +66,92 @@ body {
     align-items: center;
     color: gray;
 }
+
+/* 設定画面 */
+#settings {
+    flex-direction: column;
+}
+
+/* ボタン */
+.menu-btn {
+    padding: 10px 20px;
+    border: 1px solid #00ff66;
+    margin: 10px;
+    cursor: pointer;
+}
+
+/* About画面 */
+#about {
+    flex-direction: column;
+    text-align: center;
+}
 </style>
 </head>
 
 <body>
 
-<!-- ブート画面 -->
+<!-- ブート -->
 <div id="boot" class="screen">
-    <div id="bootText">Booting Game System...</div>
+    Booting Game System...
 </div>
 
-<!-- ロゴ画面 -->
+<!-- ロゴ -->
 <div id="logo" class="screen">
-    <img src="Logo.png" alt="Logo">
+    <img src="Logo.png" width="200">
 </div>
 
-<!-- ホーム画面 -->
+<!-- ホーム -->
 <div id="home" class="screen">
-    <div class="top-bar">ゲーム一覧</div>
-    <div class="content">
-        まだゲームはないぜ！
+    <div class="top-bar">
+        ゲーム一覧
+        <div class="settings-btn" onclick="showScreen('settings')">⚙</div>
     </div>
+    <div class="content">
+        まだゲームはないぜ！設定画面でも見てな
+    </div>
+</div>
+
+<!-- 設定 -->
+<div id="settings" class="screen">
+    <div class="menu-btn" onclick="showScreen('about')">About</div>
+    <div class="menu-btn" onclick="showScreen('home')">戻る</div>
+</div>
+
+<!-- About -->
+<div id="about" class="screen">
+    <h2>Console Info</h2>
+    <p>スマホで遊べるゲーム機</p>
+    <p>Version: β</p>
+    <p>Created by 中学のメンツ</p>
+
+    <div class="menu-btn" onclick="showScreen('settings')">戻る</div>
 </div>
 
 <script>
 
-// 画面切り替え関数
 function showScreen(id) {
     document.querySelectorAll(".screen").forEach(s => s.style.display = "none");
     document.getElementById(id).style.display = "flex";
 }
 
-// 起動処理
 window.onload = () => {
 
-    // ① ブート表示
     showScreen("boot");
 
     setTimeout(() => {
 
-        // ② ロゴ表示
         showScreen("logo");
 
         const logo = document.getElementById("logo");
-        logo.style.opacity = 0;
 
         setTimeout(() => {
             logo.style.opacity = 1;
         }, 100);
 
-        // フェードアウト
         setTimeout(() => {
             logo.style.opacity = 0;
         }, 2000);
 
-        // ③ ホームへ
         setTimeout(() => {
             showScreen("home");
         }, 3000);
