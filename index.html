@@ -119,12 +119,7 @@ body {
         <img src="Icon.png" width="30"><br>
         じゃいけん
     </div>
-    <script>
-    function openGame(id){
-    showScreen(id);
-}
-    </script>
-
+ 
 </div>
 <!-- 設定 -->
 <div id="settings" class="screen">
@@ -216,7 +211,11 @@ function startSystem() {
     </div>
 
 </div>
-
+<script>
+function openGame(id){
+    showScreen(id);
+}
+</script>
     <script src="janken.js"></script>
     <audio id="bootSound" src="Sound.mp3"></audio>
     
