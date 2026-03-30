@@ -107,15 +107,21 @@ body {
         <div class="settings-btn" onclick="showScreen('settings')">⚙</div>
     </div>
     
-   <div class="content" style="flex-direction: column; align-items: flex-start; padding: 20px;">
-
+   <div class="content" style="
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 15px;
+    gap: 15px;
+">
+    
     <div onclick="openGame('janken')" style="text-align: center; cursor: pointer;">
-        <img src="Icon.png" width="80"><br>
+        <img src="Icon.png" width="40"><br>
         じゃいけん
     </div>
 
 </div>
-
 <!-- 設定 -->
 <div id="settings" class="screen">
     <div class="menu-btn" onclick="showScreen('about')">About</div>
