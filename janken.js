@@ -54,12 +54,16 @@ function restartGame(){
     playerScore = 0;
     enemyScore = 0;
 
-    // 表示リセット
     document.getElementById("enemyScore").innerText = 0;
     document.getElementById("playerScore").innerText = 0;
     document.getElementById("jankenText").innerText = "シトムとじゃんけんしてみよう";
 
-    showScreen("janken");
+    // ボタンを元に戻す
+    document.getElementById("jankenButtons").innerHTML = `
+        <button onclick="playJanken('グー')">✊</button>
+        <button onclick="playJanken('チョキ')">✌️</button>
+        <button onclick="playJanken('パー')">✋</button>
+    `;
 }
 
 function goHome(){
