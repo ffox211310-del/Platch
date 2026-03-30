@@ -107,17 +107,16 @@ body {
         <div class="settings-btn" onclick="showScreen('settings')">⚙</div>
     </div>
     
-   <div class="content" style="
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 15px;
-    gap: 15px;
-">
-    
-    <div onclick="openGame('janken')" style="text-align: center; cursor: pointer;">
-        <img src="Icon.png" width="40"><br>
+  <div class="content">
+
+    <div onclick="openGame('janken')" style="
+        position: absolute;
+        top: 70px;
+        left: 10px;
+        text-align: center;
+        cursor: pointer;
+    ">
+        <img src="Icon.png" width="30"><br>
         じゃいけん
     </div>
 
@@ -142,7 +141,7 @@ body {
 
 function showScreen(id) {
     document.querySelectorAll(".screen").forEach(s => s.style.display = "none");
-    document.getElementById(id).style.display = "flex";
+    document.getElementById(id).style.display = "block";
 }
 
 // 最初はブート画面だけ表示
