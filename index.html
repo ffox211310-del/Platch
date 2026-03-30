@@ -91,7 +91,7 @@ body {
 <body>
 
 <!-- ブート -->
-    <div id="boot" class="screen" onclick="startSystem()">
+<div id="boot" class="screen" onclick="startSystem()">
     Please Touch Screen...
 </div>
 
@@ -102,25 +102,27 @@ body {
 
 <!-- ホーム -->
 <div id="home" class="screen">
+
     <div class="top-bar">
         ゲーム一覧
         <div class="settings-btn" onclick="showScreen('settings')">⚙</div>
     </div>
-    
-  <div class="content">
 
-    <div onclick="openGame('janken')" style="
-        position: absolute;
-        top: 70px;
-        left: 10px;
-        text-align: center;
-        cursor: pointer;
-    ">
-        <img src="Icon.png" width="30"><br>
-        じゃいけん
+    <div class="content">
+        <div onclick="openGame('janken')" style="
+            position: absolute;
+            top: 70px;
+            left: 10px;
+            text-align: center;
+            cursor: pointer;
+        ">
+            <img src="Icon.png" width="30"><br>
+            じゃいけん
+        </div>
     </div>
- 
-</div>
+
+</div> <!-- ←★homeここで閉じる！！ -->
+
 <!-- 設定 -->
 <div id="settings" class="screen">
     <div class="menu-btn" onclick="showScreen('about')">About</div>
@@ -137,56 +139,9 @@ body {
     <div class="menu-btn" onclick="showScreen('settings')">戻る</div>
 </div>
 
-
-    
-<script>
-
-function showScreen(id) {
-    document.querySelectorAll(".screen").forEach(s => s.style.display = "none");
-    document.getElementById(id).style.display = "flex";
-}
-
-// 最初はブート画面だけ表示
-window.onload = () => {
-    showScreen("boot");
-};
-
-// タップされたら起動
-function startSystem() {
-
-    setTimeout(() => {
-
-        showScreen("logo");
-
-        const sound = document.getElementById("bootSound");
-        sound.currentTime = 0;
-        sound.play().catch(() => {
-            console.log("音再生ブロックされた");
-        });
-
-        const logo = document.getElementById("logo");
-
-        setTimeout(() => {
-            logo.style.opacity = 1;
-        }, 100);
-
-        setTimeout(() => {
-            logo.style.opacity = 0;
-        }, 2000);
-
-        setTimeout(() => {
-            showScreen("home");
-        }, 3000);
-
-    }, 300);
-}
-</script>
-
-
-    
+<!-- じゃんけん -->
 <div id="janken" class="screen" style="flex-direction: column;">
 
-    <!-- スコア -->
     <div style="position:absolute; top:10px; left:10px;">
         シトム: <span id="enemyScore">0</span>
     </div>
@@ -195,15 +150,12 @@ function startSystem() {
         プレイヤー: <span id="playerScore">0</span>
     </div>
 
-    <!-- メッセージ -->
     <div id="jankenText" style="color:#00ff66; margin-top:50px;">
         シトムとじゃんけんしてみよう
     </div>
 
-    <!-- 画像 -->
     <img src="SITM.png" width="200" style="margin:20px;">
 
-    <!-- ボタン -->
     <div>
         <button onclick="playJanken('グー')">✊</button>
         <button onclick="playJanken('チョキ')">✌️</button>
@@ -211,13 +163,46 @@ function startSystem() {
     </div>
 
 </div>
+
+<!-- JSまとめ -->
 <script>
+
+function showScreen(id) {
+    document.querySelectorAll(".screen").forEach(s => s.style.display = "none");
+    document.getElementById(id).style.display = "flex";
+}
+
 function openGame(id){
     showScreen(id);
 }
+
+window.onload = () => {
+    showScreen("boot");
+};
+
+function startSystem() {
+
+    setTimeout(() => {
+
+        showScreen("logo");
+
+        const sound = document.getElementById("bootSound");
+        sound.currentTime = 0;
+        sound.play().catch(()=>{});
+
+        const logo = document.getElementById("logo");
+
+        setTimeout(() => logo.style.opacity = 1, 100);
+        setTimeout(() => logo.style.opacity = 0, 2000);
+        setTimeout(() => showScreen("home"), 3000);
+
+    }, 300);
+}
+
 </script>
-    <script src="janken.js"></script>
-    <audio id="bootSound" src="Sound.mp3"></audio>
-    
+
+<script src="janken.js"></script>
+<audio id="bootSound" src="Sound.mp3"></audio>
+
 </body>
 </html>
