@@ -142,6 +142,10 @@ window.onload = () => {
 
         showScreen("logo");
 
+const sound = document.getElementById("bootSound");
+sound.currentTime = 0;
+sound.play();
+        
         const logo = document.getElementById("logo");
 
         setTimeout(() => {
@@ -161,5 +165,7 @@ window.onload = () => {
 
 </script>
 
+    <audio id="bootSound" src="Sound.mp3"></audio>
+    
 </body>
 </html>
