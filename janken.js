@@ -44,7 +44,8 @@ function endGame(){
 
     document.getElementById("jankenText").innerText = text;
 
-    document.querySelector("#janken div:last-child").innerHTML = `
+    // ボタンエリアを書き換え
+    document.getElementById("jankenButtons").innerHTML = `
         <button onclick="restartGame()">再挑戦</button>
         <button onclick="goHome()">ホームへ</button>
     `;
