@@ -91,9 +91,8 @@ body {
 <body>
 
 <!-- ブート -->
-    
-<div id="boot" class="screen">
-    Booting Game System...
+    <div id="boot" class="screen" onclick="startSystem()">
+    タップして起動
 </div>
 
 <!-- ロゴ -->
@@ -135,18 +134,24 @@ function showScreen(id) {
     document.getElementById(id).style.display = "flex";
 }
 
+// 最初はブート画面だけ表示
 window.onload = () => {
-
     showScreen("boot");
+};
+
+// タップされたら起動
+function startSystem() {
 
     setTimeout(() => {
 
         showScreen("logo");
 
-const sound = document.getElementById("bootSound");
-sound.currentTime = 0;
-sound.play();
-        
+        const sound = document.getElementById("bootSound");
+        sound.currentTime = 0;
+        sound.play().catch(() => {
+            console.log("音再生ブロックされた");
+        });
+
         const logo = document.getElementById("logo");
 
         setTimeout(() => {
@@ -161,11 +166,10 @@ sound.play();
             showScreen("home");
         }, 3000);
 
-    }, 1500);
-};
-
-
+    }, 300);
+}
 </script>
+    
     <audio id="bootSound" src="Sound.mp3"></audio>
     
 </body>
