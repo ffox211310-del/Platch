@@ -84,18 +84,33 @@ function endCatchGame(win){
 
     let text = win ? "完遂" : "Oh...";
 
-    document.getElementById("catchGame").innerHTML = `
-        <div style="color:#00ff66; font-size:30px;">
-            ${text}
-        </div>
+    document.getElementById("resultText").innerText = text;
 
-       <button type="button" onclick="restartCatch()">再挑戦</button>
-<button type="button" onclick="goHome()">ホームへ</button>
-    `;
+    // ゲーム要素を隠す
+    document.getElementById("player").style.display = "none";
+    document.getElementById("fallArea").style.display = "none";
+
+    // 終了画面を表示
+    document.getElementById("catchResult").style.display = "flex";
 }
 
 // 再挑戦
 function restartCatch(){
+
+    // 終了画面消す
+    document.getElementById("catchResult").style.display = "none";
+
+    // ゲーム要素戻す
+    document.getElementById("player").style.display = "block";
+    document.getElementById("fallArea").style.display = "block";
+
+    // 落ちてるやつ全部削除
+    document.querySelectorAll("#catchGame div").forEach(e=>{
+        if(e.innerText === "🥒" || e.innerText === "🐙" || e.innerText === "☄️" || e.innerText === "😏"){
+            e.remove();
+        }
+    });
+
     startCatchGame();
 }
 
