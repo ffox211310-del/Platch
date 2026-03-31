@@ -7,6 +7,7 @@ function openGame(id){
     showScreen(id);
 
     if(id === "catchGame"){
+        document.getElementById("player").style.display = "block";
         startCatchGame();
     }
 }
