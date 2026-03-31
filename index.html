@@ -139,6 +139,17 @@ body {
         </div>
     </div>
 
+    <div onclick="openGame('catchGame')" style="
+    position: absolute;
+    top: 130px;
+    left: 10px;
+    text-align: center;
+    cursor: pointer;
+">
+    <img src="catchIconNEW.png" width="30"><br>
+    キャッチ
+</div>
+
 </div> <!-- ←★homeここで閉じる！！ -->
 
 <!-- 設定 -->
@@ -190,6 +201,31 @@ body {
     <button onclick="playJanken('グー')">✊</button>
     <button onclick="playJanken('チョキ')">✌️</button>
     <button onclick="playJanken('パー')">✋</button>
+</div>
+
+    <div id="catchGame" class="screen" style="flex-direction: column; overflow:hidden;">
+
+    <!-- タイマー -->
+    <div style="position:absolute; top:10px; left:10px;">
+        ⏱ <span id="time">15</span>
+    </div>
+
+    <!-- スコア -->
+    <div style="position:absolute; top:10px; right:10px;">
+        ⭐ <span id="score">0</span>
+    </div>
+
+    <!-- 落下物 -->
+    <div id="fallArea"></div>
+
+    <!-- シトム -->
+    <img id="player" src="catch.png" width="80" style="
+        position:absolute;
+        bottom:10px;
+        left:50%;
+        transform:translateX(-50%);
+    ">
+
 </div>
     
 </div>
