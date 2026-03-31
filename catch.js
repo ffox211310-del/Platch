@@ -89,8 +89,8 @@ function endCatchGame(win){
             ${text}
         </div>
 
-        <button onclick="restartCatch()">再挑戦</button>
-        <button onclick="goHome()">ホームへ</button>
+       <button type="button" onclick="restartCatch()">再挑戦</button>
+<button type="button" onclick="goHome()">ホームへ</button>
     `;
 }
 
