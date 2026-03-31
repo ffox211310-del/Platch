@@ -14,7 +14,7 @@ function openGame(id){
 function startCatchGame(){
     score = 0;
     timeLeft = 25;
-
+document.getElementById("player").style.display = "block";
     document.getElementById("score").innerText = 0;
     document.getElementById("time").innerText = 25;
 
