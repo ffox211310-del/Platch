@@ -85,7 +85,7 @@ function endCatchGame(win){
     let text = win ? "完遂" : "Oh...";
 
     document.getElementById("resultText").innerText = text;
-
+showScreen("catchResult"); 
     // ゲーム要素を隠す
     document.getElementById("player").style.display = "none";
     document.getElementById("fallArea").style.display = "none";
@@ -93,10 +93,15 @@ function endCatchGame(win){
     // 終了画面を表示
     document.getElementById("catchResult").style.display = "flex";
 }
-
+//消すかも
+function goHome(){
+    showScreen("home");
+}
 // 再挑戦
 function restartCatch(){
-
+    showScreen("catchGame");
+    startCatchGame();
+}
     // 終了画面消す
     document.getElementById("catchResult").style.display = "none";
 
