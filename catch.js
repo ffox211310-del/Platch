@@ -16,7 +16,7 @@ function startCatchGame(){
     timeLeft = 25;
 
     document.getElementById("score").innerText = 0;
-    document.getElementById("time").innerText = 15;
+    document.getElementById("time").innerText = 25;
 
     // タイマー
     gameInterval = setInterval(()=>{
