@@ -139,6 +139,8 @@ body {
         </div>
     </div>
 
+  <div class="content">
+    
     <div onclick="openGame('catchGame')" style="
     position: absolute;
     top: 130px;
@@ -261,6 +263,14 @@ window.onload = () => {
     showScreen("boot");
 };
 
+    function openGame(id){
+    showScreen(id);
+
+    if(id === "catchGame"){
+        startCatchGame();
+    }
+}
+    
 function startSystem() {
 
     setTimeout(() => {
@@ -283,6 +293,7 @@ function startSystem() {
 </script>
 
 <script src="janken.js"></script>
+    <script src="catch.js"></script>
 <audio id="bootSound" src="Sound.mp3"></audio>
 
 </body>
