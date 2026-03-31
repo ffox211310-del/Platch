@@ -1,5 +1,5 @@
 let score = 0;
-let timeLeft = 15;
+let timeLeft = 25;
 let gameInterval;
 let fallInterval;
 
@@ -13,7 +13,7 @@ function openGame(id){
 
 function startCatchGame(){
     score = 0;
-    timeLeft = 15;
+    timeLeft = 25;
 
     document.getElementById("score").innerText = 0;
     document.getElementById("time").innerText = 15;
