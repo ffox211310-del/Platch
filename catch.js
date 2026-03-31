@@ -96,9 +96,8 @@ function endCatchGame(win){
 
 // 再挑戦
 function restartCatch(){
-    location.reload(); // ←あとで改良可
+    startCatchGame();
 }
-
 
 let player = null;
 let startX = 0;
