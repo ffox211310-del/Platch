@@ -100,12 +100,12 @@ function restartCatch(){
 }
 
 
-let player = document.getElementById("player");
-
+let player = null;
 let startX = 0;
 
 document.addEventListener("touchstart", e=>{
     startX = e.touches[0].clientX;
+    player = document.getElementById("player"); 
 });
 
 document.addEventListener("touchmove", e=>{
