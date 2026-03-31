@@ -49,6 +49,15 @@ body {
     position: relative;
 }
 
+    <div id="clock" style="
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    font-size: 14px;
+">
+    00:00
+</div>
+    
 /* ⚙ボタン */
 .settings-btn {
     position: absolute;
@@ -185,6 +194,21 @@ body {
 <!-- JSまとめ -->
 <script>
 
+    function updateClock() {
+    const now = new Date();
+
+    let h = now.getHours().toString().padStart(2, '0');
+    let m = now.getMinutes().toString().padStart(2, '0');
+
+    document.getElementById("clock").textContent = `${h}:${m}`;
+}
+
+// 1秒ごと更新
+setInterval(updateClock, 1000);
+
+// 初回実行
+updateClock();
+    
 function showScreen(id) {
     document.querySelectorAll(".screen").forEach(s => s.style.display = "none");
     document.getElementById(id).style.display = "flex";
