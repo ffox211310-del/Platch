@@ -91,7 +91,7 @@ showScreen("catchResult");
     document.getElementById("fallArea").style.display = "none";
 
     // 終了画面を表示
-    document.getElementById("catchResult").style.display = "flex";
+   
 }
 //消すかも
 function goHome(){
@@ -99,17 +99,17 @@ function goHome(){
 }
 // 再挑戦
 function restartCatch(){
-    showScreen("catchGame");
-    startCatchGame();
-}
     // 終了画面消す
     document.getElementById("catchResult").style.display = "none";
 
-    // ゲーム要素戻す
+    // ゲーム画面に戻る
+    showScreen("catchGame");
+
+    // プレイヤー戻す
     document.getElementById("player").style.display = "block";
     document.getElementById("fallArea").style.display = "block";
 
-    // 落ちてるやつ全部削除
+    // 落ちてるやつ削除
     document.querySelectorAll("#catchGame div").forEach(e=>{
         if(e.innerText === "🥒" || e.innerText === "🐙" || e.innerText === "☄️" || e.innerText === "😏"){
             e.remove();
