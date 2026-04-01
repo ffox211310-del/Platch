@@ -153,6 +153,18 @@ body {
     キャッチ
 </div>
 
+    <div onclick="openGame('moguraGame')" style="
+    position: absolute;
+    top: 200px;
+    left: 19px;
+    text-align: center;
+    cursor: pointer;
+    color:#ffffff;
+">
+    <img src="Mogura.png" width="30"><br>
+    シトム叩き
+</div>
+    
 </div> <!-- ←★homeここで閉じる！！ -->
 
 <!-- 設定 -->
@@ -235,6 +247,20 @@ body {
 
 </div>
 
+    <div id="moguraGame" class="screen" style="flex-direction: column;">
+
+    <!-- タイマー -->
+    <div style="position:absolute; top:10px; left:10px;">
+        ⏱ <span id="moguraTime">20</span>
+    </div>
+
+    <!-- スコア -->
+    <div style="position:absolute; top:10px; right:10px;">
+        ⭐ <span id="moguraScore">0</span>
+    </div>
+
+</div>
+    
   <div id="catchResult" class="screen" style="
     display:none;
     flex-direction:column;
@@ -244,6 +270,13 @@ body {
 
     <button type="button" onclick="restartCatch()">再挑戦</button>
     <button type="button" onclick="goHome()">ホームへ</button>
+</div>
+
+    <div id="moguraResult" class="screen" style="flex-direction:column;">
+    <div id="moguraResultText" style="font-size:30px;"></div>
+
+    <button onclick="restartMogura()">再挑戦</button>
+    <button onclick="goHome()">ホームへ</button>
 </div>
     
 <!-- JSまとめ -->
