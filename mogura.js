@@ -34,8 +34,8 @@ function spawnMogura(){
         img.style.position = "absolute";
         img.style.width = "60px";
 
-        img.style.top = Math.random()*80 + "%";
-        img.style.left = Math.random()*80 + "%";
+       img.style.top = Math.random() * (window.innerHeight - 80) + "px";
+img.style.left = Math.random() * (window.innerWidth - 80) + "px";
 
         // 叩いた
         img.onclick = ()=>{
