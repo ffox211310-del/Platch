@@ -371,7 +371,13 @@ function spawnMogura(){
         img.style.position = "absolute";
         img.style.width = "60px";
 
-      
+      const gameArea = document.getElementById("moguraGame");
+
+const maxX = gameArea.clientWidth - 60;
+const maxY = gameArea.clientHeight - 60;
+
+img.style.left = Math.random() * maxX + "px";
+img.style.top = Math.random() * maxY + "px";
 
         img.onclick = ()=>{
             moguraScore++;
