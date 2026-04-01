@@ -40,7 +40,7 @@ function spawnMogura(){
         };
 
         document.getElementById("moguraGame").appendChild(img);
-
+console.log("mogura読み込み成功");
         setTimeout(()=> img.remove(), 500);
     }
 }
