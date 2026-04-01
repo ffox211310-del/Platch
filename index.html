@@ -188,7 +188,9 @@ body {
     <!-- NEWS -->
 <div id="news" class="screen">
     <h2>最新情報</h2>
-    <p>2026年４月1日</p>
+    <p>2026年４月2日</p>
+    <p>『シトム叩き』の製作に失敗。また別のゲームを作る</p>
+    <p>4月1日
     <p>『キャッチ』を追加</p>
     <p>3月31日</p>
     <p>『じゃいけん』を追加</p>
@@ -339,80 +341,14 @@ function startSystem() {
     }, 300);
 }
 
-    let moguraScore = 0;
-let moguraTime = 20;
-let moguraTimer;
-let moguraSpawn;
-
-// ゲーム開始
-function startMoguraGame(){
-    moguraScore = 0;
-    moguraTime = 20;
-
-    document.getElementById("moguraScore").innerText = 0;
-    document.getElementById("moguraTime").innerText = 20;
-
-    moguraTimer = setInterval(()=>{
-        moguraTime--;
-        document.getElementById("moguraTime").innerText = moguraTime;
-
-        if(moguraTime <= 0){
-            endMoguraGame();
-        }
-    },1000);
-
-    moguraSpawn = setInterval(spawnMogura, 500);
-}
-
-function spawnMogura(){
-    for(let i=0;i<2;i++){
-        const img = document.createElement("img");
-        img.src = "MoguraSITM.png";
-        img.style.position = "absolute";
-        img.style.width = "60px";
-
-      const gameArea = document.getElementById("moguraGame");
-
-const maxX = gameArea.clientWidth - 60;
-const maxY = gameArea.clientHeight - 60;
-
-img.style.left = Math.random() * maxX + "px";
-img.style.top = Math.random() * maxY + "px";
-
-        img.onclick = ()=>{
-            moguraScore++;
-            document.getElementById("moguraScore").innerText = moguraScore;
-            img.remove();
-        };
-
-        document.getElementById("moguraGame").appendChild(img);
-
-        setTimeout(()=> img.remove(), 500);
-    }
-}
-
-function endMoguraGame(){
-    clearInterval(moguraTimer);
-    clearInterval(moguraSpawn);
-
-    document.getElementById("moguraResultText").innerText =
-        "スコア: " + moguraScore;
-
-    showScreen("moguraResult");
-
-    document.querySelectorAll("#moguraGame img").forEach(e=>e.remove());
-}
-
-function restartMogura(){
-    showScreen("moguraGame");
-    startMoguraGame();
-}
+   
     
 </script>
 
+    <script src="mogura.js"></script>
 <script src="janken.js"></script>
     <script src="catch.js"></script>
 <audio id="bootSound" src="Sound.mp3"></audio>
- 
+
 </body>
 </html>
