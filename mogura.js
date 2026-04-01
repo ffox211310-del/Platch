@@ -1,3 +1,4 @@
+console.log("mogura読み込み成功");
 let moguraScore = 0;
 let moguraTime = 20;
 let moguraTimer;
