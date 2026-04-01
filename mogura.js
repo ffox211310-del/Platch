@@ -11,7 +11,6 @@ function startMoguraGame(){
     document.getElementById("moguraScore").innerText = 0;
     document.getElementById("moguraTime").innerText = 20;
 
-    // タイマー
     moguraTimer = setInterval(()=>{
         moguraTime--;
         document.getElementById("moguraTime").innerText = moguraTime;
@@ -21,23 +20,19 @@ function startMoguraGame(){
         }
     },1000);
 
-    // 出現
     moguraSpawn = setInterval(spawnMogura, 500);
 }
 
-// モグラ出現
 function spawnMogura(){
     for(let i=0;i<2;i++){
-
         const img = document.createElement("img");
         img.src = "MoguraSITM.png";
         img.style.position = "absolute";
         img.style.width = "60px";
 
-       img.style.top = Math.random() * (window.innerHeight - 80) + "px";
-img.style.left = Math.random() * (window.innerWidth - 80) + "px";
+        img.style.top = Math.random() * (window.innerHeight - 80) + "px";
+        img.style.left = Math.random() * (window.innerWidth - 80) + "px";
 
-        // 叩いた
         img.onclick = ()=>{
             moguraScore++;
             document.getElementById("moguraScore").innerText = moguraScore;
@@ -46,14 +41,10 @@ img.style.left = Math.random() * (window.innerWidth - 80) + "px";
 
         document.getElementById("moguraGame").appendChild(img);
 
-        // 0.5秒で消える
-        setTimeout(()=>{
-            img.remove();
-        },500);
+        setTimeout(()=> img.remove(), 500);
     }
 }
 
-// 終了
 function endMoguraGame(){
     clearInterval(moguraTimer);
     clearInterval(moguraSpawn);
@@ -63,11 +54,9 @@ function endMoguraGame(){
 
     showScreen("moguraResult");
 
-    // 残ってるモグラ消す
     document.querySelectorAll("#moguraGame img").forEach(e=>e.remove());
 }
 
-// 再挑戦
 function restartMogura(){
     showScreen("moguraGame");
     startMoguraGame();
