@@ -74,3 +74,7 @@ function endDaruma(clear){
 
     showScreen("darumaResult");
 }
+
+function goHome(){
+    showScreen("home");
+}
