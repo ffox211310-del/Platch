@@ -1,3 +1,5 @@
+console.log("クリックされた");
+
 let steps = 50;
 let isLooking = false;
 let darumaTimer;
