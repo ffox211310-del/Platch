@@ -293,6 +293,28 @@ body {
     <button onclick="restartMogura()">再挑戦</button>
     <button onclick="goHome()">ホームへ</button>
 </div>
+
+    <div id="darumaGame" class="screen" style="flex-direction: column;">
+
+    <!-- 上の文字 -->
+    <div style="position:absolute; top:10px; text-align:center;">
+        画面をタップ！
+    </div>
+
+    <!-- 残り歩数 -->
+    <div style="position:absolute; top:10px; right:10px;">
+        あと <span id="steps">50</span> 歩
+    </div>
+
+    <!-- 画像 -->
+    <img id="sitom" src="Haigo.png" width="200" style="margin-top:50px;">
+
+    <!-- 下の文字 -->
+    <div id="statusText" style="margin-top:20px;">
+        シトムくんが...
+    </div>
+
+</div>
     
 <!-- JSまとめ -->
 <script>
