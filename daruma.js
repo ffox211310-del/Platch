@@ -4,7 +4,6 @@ let darumaTimer;
 
 // クリック処理（←これを分離するのが超重要）
 function handleDarumaClick(){
-   console.log("クリックされた");
     const screen = document.getElementById("darumaGame");
 
   if(!screen || screen.style.display === "none") return;
