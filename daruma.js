@@ -1,5 +1,3 @@
-alert("daruma読み込まれた");
-
 let steps = 50;
 let isLooking = false;
 let darumaTimer;
@@ -31,8 +29,11 @@ function startDarumaGame(){
     document.getElementById("sitom").src = "Haigo.png";
     document.getElementById("statusText").innerText = "シトムくんが...";
 
-    // ←これ追加（毎回登録）
-    document.addEventListener("click", handleDarumaClick);
+    // ←ここ修正（安全版）
+    setTimeout(() => {
+        const screen = document.getElementById("darumaGame");
+        screen.addEventListener("click", handleDarumaClick);
+    }, 0);
 
     nextTurn();
 }
@@ -67,8 +68,8 @@ function lookPlayer(){
 function endDaruma(clear){
     clearTimeout(darumaTimer);
 
-    // ←これ超重要（イベント削除）
-    document.removeEventListener("click", handleDarumaClick);
+    const screen = document.getElementById("darumaGame");
+    screen.removeEventListener("click", handleDarumaClick);
 
     let text = clear ? "やるじゃないか" : "どんまい";
 
