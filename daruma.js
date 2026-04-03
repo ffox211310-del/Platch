@@ -31,11 +31,15 @@ function startDarumaGame(){
     document.getElementById("sitom").src = "Haigo.png";
     document.getElementById("statusText").innerText = "シトムくんが...";
 
-    // ←ここ修正（安全版）
-    setTimeout(() => {
-        const screen = document.getElementById("darumaGame");
-       screen.addEventListener("touchstart", handleDarumaClick);
-    }, 0);
+    const screen = document.getElementById("darumaGame");
+
+    // 念のため一回消す
+    screen.removeEventListener("click", handleDarumaClick);
+    screen.removeEventListener("touchstart", handleDarumaClick);
+
+    // 追加
+    screen.addEventListener("click", handleDarumaClick);
+    screen.addEventListener("touchstart", handleDarumaClick);
 
     nextTurn();
 }
