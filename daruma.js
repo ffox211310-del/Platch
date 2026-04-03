@@ -1,5 +1,5 @@
-console.log("クリックされた");
 
+alert("daruma.js 読み込まれた");
 let steps = 50;
 let isLooking = false;
 let darumaTimer;
