@@ -2,20 +2,8 @@ let steps = 50;
 let isLooking = false;
 let darumaTimer;
 
-// 開始
-function startDarumaGame(){
-    steps = 50;
-    isLooking = false;
-
-    document.getElementById("steps").innerText = steps;
-    document.getElementById("sitom").src = "Haigo.png";
-    document.getElementById("statusText").innerText = "シトムくんが...";
-
-    nextTurn();
-}
-
-// タップ処理
-document.addEventListener("click", ()=>{
+// クリック処理（←これを分離するのが超重要）
+function handleDarumaClick(){
     const screen = document.getElementById("darumaGame");
 
     if(!screen || screen.style.display !== "flex") return;
@@ -30,7 +18,22 @@ document.addEventListener("click", ()=>{
             endDaruma(true);
         }
     }
-});
+}
+
+// 開始
+function startDarumaGame(){
+    steps = 50;
+    isLooking = false;
+
+    document.getElementById("steps").innerText = steps;
+    document.getElementById("sitom").src = "Haigo.png";
+    document.getElementById("statusText").innerText = "シトムくんが...";
+
+    // ←これ追加（毎回登録）
+    document.addEventListener("click", handleDarumaClick);
+
+    nextTurn();
+}
 
 // ランダム振り向き
 function nextTurn(){
@@ -61,6 +64,9 @@ function lookPlayer(){
 // 終了
 function endDaruma(clear){
     clearTimeout(darumaTimer);
+
+    // ←これ超重要（イベント削除）
+    document.removeEventListener("click", handleDarumaClick);
 
     let text = clear ? "やるじゃないか" : "どんまい";
 
