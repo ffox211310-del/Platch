@@ -176,6 +176,18 @@ body {
     <img src="SITMMUITA.png" width="33"><br>
     ころんだ
 </div>
+
+    <div onclick="openGame('escapeGame')" style="
+    position: absolute;
+    top: 345px;
+    left: 18px;
+    text-align: center;
+    cursor: pointer;
+    color:#ffffff;
+">
+    <div style="font-size:30px;">🟢</div>
+    エスケープ
+</div>
     
 </div> <!-- ←★homeここで閉じる！！ -->
 
@@ -323,6 +335,44 @@ body {
 
     <button onclick="goHome()">HOMEに戻る</button>
 </div>
+
+    <!-- エスケープゲーム -->
+<div id="escapeGame" class="screen" style="flex-direction: column; overflow:hidden;">
+
+    <!-- スコア -->
+    <div style="position:absolute; top:10px; right:10px;">
+        ⭐ <span id="escapeScore">0</span>
+    </div>
+
+    <!-- プレイヤー -->
+    <div id="playerBox" style="
+        position:absolute;
+        left:20px;
+        top:50%;
+        width:30px;
+        height:30px;
+        background:lime;
+    "></div>
+
+    <!-- 敵エリア -->
+    <div id="enemyArea"></div>
+
+    <!-- 操作ボタン -->
+    <div style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%);">
+        <button onclick="moveUp()">↑</button>
+        <button onclick="moveDown()">↓</button>
+    </div>
+
+</div>
+
+<!-- 結果画面 -->
+<div id="escapeResult" class="screen" style="flex-direction:column; align-items:center;">
+    <img src="yararetaSITM.png" width="150">
+    <div id="escapeResultText" style="font-size:30px;"></div>
+
+    <button onclick="restartEscape()">再スタート</button>
+    <button onclick="goHome()">ホームに戻る</button>
+</div>
     
 <!-- JSまとめ -->
 <script>
@@ -359,6 +409,9 @@ window.onload = () => {
     if(id === "catchGame"){
         startCatchGame();
     }
+      if(id === "escapeGame"){
+    startEscapeGame();
+}
     if(id === "moguraGame"){
         startMoguraGame();
     }
