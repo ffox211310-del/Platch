@@ -1,3 +1,6 @@
+const GRID = 10; // 全体10マス
+let currentLane = 5; // 真ん中スタート（0〜9）
+
 let escapeScore = 0;
 let playerY = window.innerHeight / 2;
 let gameLoop;
