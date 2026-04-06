@@ -38,7 +38,7 @@ function createEnemy(){
     let y = Math.random() * (window.innerHeight - 30);
 
     enemy.style.position = "absolute";
-    enemy.style.right = "0px";
+ enemy.style.left = window.innerWidth + "px";
     enemy.style.top = y + "px";
     enemy.style.width = "30px";
     enemy.style.height = "30px";
