@@ -1,13 +1,10 @@
-console.log("enemy created");
-
-const GRID = 10; // 全体10マス
-let currentLane = 5; // 真ん中スタート（0〜9）
+const GRID = 10;
+let currentLane = 5;
 
 let escapeScore = 0;
-let playerY = window.innerHeight / 2;
-let gameLoop;
 let enemyLoop;
 
+// ゲーム開始
 function startEscapeGame(){
     escapeScore = 0;
     currentLane = 5;
@@ -16,10 +13,13 @@ function startEscapeGame(){
 
     updatePlayer();
 
-    gameLoop = setInterval(updateGame, 20);
-    enemyLoop = setInterval(createEnemy, 1000);
+    // 前のループ止める（超重要）
+    clearInterval(enemyLoop);
+
+    enemyLoop = setInterval(createEnemy, 800);
 }
 
+// 上
 function moveUp(){
     if(currentLane > 0){
         currentLane--;
@@ -27,6 +27,7 @@ function moveUp(){
     }
 }
 
+// 下
 function moveDown(){
     if(currentLane < GRID - 1){
         currentLane++;
@@ -34,56 +35,64 @@ function moveDown(){
     }
 }
 
+// プレイヤー位置更新
 function updatePlayer(){
     const player = document.getElementById("playerBox");
+    const game = document.getElementById("escapeGame");
 
-    const laneHeight = window.innerHeight / GRID;
+    const laneHeight = game.clientHeight / GRID;
     const y = currentLane * laneHeight;
 
     player.style.top = y + "px";
 }
 
+// 敵生成
 function createEnemy(){
-    const enemy = document.createElement("div");
-
     const game = document.getElementById("escapeGame");
+    const area = document.getElementById("enemyArea");
+
     const gameWidth = game.clientWidth;
     const gameHeight = game.clientHeight;
 
+    const enemy = document.createElement("div");
+
+    // マス位置
     const lane = Math.floor(Math.random() * GRID);
     const laneHeight = gameHeight / GRID;
     let y = lane * laneHeight;
 
     enemy.style.position = "absolute";
-    enemy.style.left = gameWidth + "px"; // ←修正
+    enemy.style.left = gameWidth + "px";
     enemy.style.top = y + "px";
     enemy.style.width = "30px";
     enemy.style.height = "30px";
     enemy.style.background = "red";
 
-    document.getElementById("enemyArea").appendChild(enemy);
+    area.appendChild(enemy);
 
     let x = gameWidth;
 
     const move = setInterval(() => {
-        x -= 5;
+        x -= 6; // スピード
         enemy.style.left = x + "px";
 
         const player = document.getElementById("playerBox");
-        const pRect = player.getBoundingClientRect();
-        const eRect = enemy.getBoundingClientRect();
+        const p = player.getBoundingClientRect();
+        const e = enemy.getBoundingClientRect();
 
+        // 衝突
         if(
-            pRect.left < eRect.right &&
-            pRect.right > eRect.left &&
-            pRect.top < eRect.bottom &&
-            pRect.bottom > eRect.top
+            p.left < e.right &&
+            p.right > e.left &&
+            p.top < e.bottom &&
+            p.bottom > e.top
         ){
-            endGame();
             clearInterval(move);
+            endGame();
         }
 
-        if(x < 0){
+        // 通過
+        if(x < -40){
             escapeScore++;
             document.getElementById("escapeScore").textContent = escapeScore;
             enemy.remove();
@@ -93,12 +102,8 @@ function createEnemy(){
     }, 20);
 }
 
-function updateGame(){
-    // 今は特に処理なし（拡張用）
-}
-
+// 終了
 function endGame(){
-    clearInterval(gameLoop);
     clearInterval(enemyLoop);
 
     document.getElementById("escapeResultText").textContent =
@@ -107,7 +112,11 @@ function endGame(){
     showScreen("escapeResult");
 }
 
+// 再スタート
 function restartEscape(){
+    // 敵全消し（超重要）
+    document.getElementById("enemyArea").innerHTML = "";
+
     showScreen("escapeGame");
     startEscapeGame();
 }
