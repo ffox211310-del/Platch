@@ -1,3 +1,5 @@
+console.log("enemy created");
+
 const GRID = 10; // 全体10マス
 let currentLane = 5; // 真ん中スタート（0〜9）
 
