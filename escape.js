@@ -44,20 +44,24 @@ function updatePlayer(){
 function createEnemy(){
     const enemy = document.createElement("div");
 
+    const game = document.getElementById("escapeGame");
+    const gameWidth = game.clientWidth;
+    const gameHeight = game.clientHeight;
+
     const lane = Math.floor(Math.random() * GRID);
-    const laneHeight = window.innerHeight / GRID;
+    const laneHeight = gameHeight / GRID;
     let y = lane * laneHeight;
 
     enemy.style.position = "absolute";
-    enemy.style.left = window.innerWidth + "px";
+    enemy.style.left = gameWidth + "px"; // ←修正
     enemy.style.top = y + "px";
     enemy.style.width = "30px";
     enemy.style.height = "30px";
     enemy.style.background = "red";
 
-   document.getElementById("enemyArea").appendChild(enemy);
+    document.getElementById("enemyArea").appendChild(enemy);
 
-    let x = window.innerWidth;
+    let x = gameWidth;
 
     const move = setInterval(() => {
         x -= 5;
