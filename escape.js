@@ -55,7 +55,7 @@ function createEnemy(){
     enemy.style.height = "30px";
     enemy.style.background = "red";
 
-    document.getElementById("escapeGame").appendChild(enemy);
+   document.getElementById("enemyArea").appendChild(enemy);
 
     let x = window.innerWidth;
 
