@@ -8,40 +8,48 @@ let enemyLoop;
 
 function startEscapeGame(){
     escapeScore = 0;
-    playerY = window.innerHeight / 2;
+    currentLane = 5;
 
     document.getElementById("escapeScore").textContent = 0;
 
-    const player = document.getElementById("playerBox");
-    player.style.top = playerY + "px";
+    updatePlayer();
 
-    // ループ開始
     gameLoop = setInterval(updateGame, 20);
     enemyLoop = setInterval(createEnemy, 1000);
 }
 
 function moveUp(){
-    playerY -= 30;
-    updatePlayer();
+    if(currentLane > 0){
+        currentLane--;
+        updatePlayer();
+    }
 }
 
 function moveDown(){
-    playerY += 30;
-    updatePlayer();
+    if(currentLane < GRID - 1){
+        currentLane++;
+        updatePlayer();
+    }
 }
 
 function updatePlayer(){
     const player = document.getElementById("playerBox");
-    player.style.top = playerY + "px";
+
+    const laneHeight = window.innerHeight / GRID;
+    const y = currentLane * laneHeight;
+
+    player.style.top = y + "px";
 }
 
 function createEnemy(){
     const enemy = document.createElement("div");
 
-    let y = Math.random() * (window.innerHeight - 30);
+    const lane = Math.floor(Math.random() * GRID);
+    const laneHeight = window.innerHeight / GRID;
+    let y = lane * laneHeight;
 
     enemy.style.position = "absolute";
- enemy.style.left = window.innerWidth + "px";
+    enemy.style.left = window.innerWidth + "px";
     enemy.style.top = y + "px";
     enemy.style.width = "30px";
     enemy.style.height = "30px";
@@ -55,9 +63,7 @@ function createEnemy(){
         x -= 5;
         enemy.style.left = x + "px";
 
-        // 衝突判定
         const player = document.getElementById("playerBox");
-
         const pRect = player.getBoundingClientRect();
         const eRect = enemy.getBoundingClientRect();
 
@@ -71,7 +77,6 @@ function createEnemy(){
             clearInterval(move);
         }
 
-        // 通過成功
         if(x < 0){
             escapeScore++;
             document.getElementById("escapeScore").textContent = escapeScore;
